@@ -17,7 +17,15 @@ app.get('/posts', async (req, res) => {
         `SELECT footballPosts.title, footballPosts.content, footballPosts.likes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
     )
     res.send(result.rows)
-    console.log(result)
+    // console.log(result)
+})
+
+app.get('/create', async (req, res) => {
+    const result = await db.query(
+        `SELECT footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
+    )
+    res.send(result.rows)
+    // console.log(result)
 })
 
 app.listen(PORT, () => {

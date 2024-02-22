@@ -20,12 +20,16 @@ db.query(
         name varchar(50) NOT NULL
     );
     
-    INSERT INTO footballCategories (name) VALUES ('Premier League');
-    INSERT INTO footballCategories (name) VALUES ('La Liga');
-    INSERT INTO footballCategories (name) VALUES ('Serie A');
-    INSERT INTO footballCategories (name) VALUES ('Ligue 1');
-    INSERT INTO footballCategories (name) VALUES ('Bundesliga');
-    INSERT INTO footballPosts (title, content, likes, footballCategory) VALUES ('EXAMPLE1', 'EXAMPLE CONTENT 1', 0, 1);
-    INSERT INTO footballPosts (title, content, likes, footballCategory) VALUES ('EXAMPLE2', 'EXAMPLE CONTENT 2', 0, 2);
+    INSERT INTO footballPosts (title, content, likes, footballCategory) VALUES ('EXAMPLE3', 'EXAMPLE CONTENT 3', 0, 3);
+    INSERT INTO footballPosts (title, content, likes, footballCategory) VALUES ('EXAMPLE4', 'EXAMPLE CONTENT 4', 0, 4);
     `
 )
+
+// INSERT INTO footballCategories (name) VALUES ('Premier League');
+//     INSERT INTO footballCategories (name) VALUES ('La Liga');
+//     INSERT INTO footballCategories (name) VALUES ('Serie A');
+//     INSERT INTO footballCategories (name) VALUES ('Ligue 1');
+//     INSERT INTO footballCategories (name) VALUES ('Bundesliga');
+//     INSERT INTO footballPosts (title, content, likes, footballCategory) VALUES ('EXAMPLE1', 'EXAMPLE CONTENT 1', 0, 1);
+//     INSERT INTO footballPosts (title, content, likes, footballCategory) VALUES ('EXAMPLE2', 'EXAMPLE CONTENT 2', 0, 2);
+//     `

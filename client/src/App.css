@@ -21,7 +21,58 @@ header {
     margin-top: 1rem;
 }
 
-.postBoard {
-    display: flex;
+.pageHeader {
+    font-size: 2rem;
+}
+
+/* POST PAGE */
+#postBoard {
+    /* display: flex;
     gap: 1rem;
+    margin-top: 1rem; */
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.postsDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+/* CREATE POST PAGE */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 22rem;
+    margin-top: 1rem;
+}
+
+form div{
+    display: flex;
+    flex-direction: column;
+}
+
+form input, select, textarea, button {
+    font-size: 1.25rem;
+    border: 2px solid black;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+label {
+    margin-left: 0.25rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.2rem;
+}
+
+button {
+    background-color: greenyellow;
 }
