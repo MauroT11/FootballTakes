@@ -17,7 +17,7 @@ function App() {
         <Link to='/home' className='navLinks'>Home</Link> | <Link to='/posts' className='navLinks'>Posts</Link> | <Link to='/newPost' className='navLinks'>Create Post</Link>
       </nav>
       <Routes>
-        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route path='*' element={<NotFound />} />
         <Route path='/posts' element={<Posts serverURL={serverURL} />} />
         <Route path='/newPost' element={<NewPost serverURL={serverURL} />} />
