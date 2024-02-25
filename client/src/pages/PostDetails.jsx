@@ -22,8 +22,31 @@ export default function PostDetails(serverURL) {
         console.log(results)
     }
 
-    async function handleDelete() {
+    async function handleDislikes(id, dislikes) {
+        console.log('dislikes')
+
+        let dislike = dislikes + 1
+
+        let results = await fetch(`${serverURL.serverURL}dislike`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers : {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id, dislike })
+        });
+        console.log(results)
+    }
+
+    async function handleDelete(id) {
         console.log('DELETE')
+
+        const result = await fetch(`${serverURL.serverURL}delete/${id}`, {
+            mode: 'cors',
+            method: 'DELETE'
+        })
+        console.log(result)
     }
 
     return (
@@ -32,11 +55,15 @@ export default function PostDetails(serverURL) {
             <h1>{post.state.title}</h1>
             <h3>{post.state.category}</h3>
             <p>{post.state.content}</p>
-            <h4>{post.state.likes} Like(s)</h4>
+            <div>
+                <h4>{post.state.likes} Like(s)</h4>
+                <h4>{post.state.dislikes} Dislike(s)</h4>
+            </div>
+            
             <div id="postBtns">
                 <button className="postBtn" onClick={() => handleLikes(post.state.id, post.state.likes)}>👍</button>
-                {/* <button className="postBtn" onClick={() => handleLikes(post.id, post.likes)}>👎</button> */}
-                <button className="postBtn delete" onClick={handleDelete}>🗙</button>
+                <button className="postBtn" onClick={() => handleDislikes(post.state.id, post.state.dislikes)}>👎</button>
+                <button className="postBtn delete" onClick={() => handleDelete(post.state.id)}>🗙</button>
             </div>
         </div>
     )

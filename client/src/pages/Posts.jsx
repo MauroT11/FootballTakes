@@ -23,7 +23,10 @@ export default function Posts(serverURL) {
         <div className="postsDiv" key={posts.id}>
             <h3>{post.title}</h3>
             <h4>{post.category}</h4>
-            <h5>{post.likes} Like(s)</h5>
+            <div>
+                <h5>{post.likes} 👍</h5>
+                <h5>{post.dislikes} 👎</h5>
+            </div>
             <div id="postBtnDiv">
                 <Link to={`/posts/${post.id}`} state={post}>
                     <button>View Post</button>

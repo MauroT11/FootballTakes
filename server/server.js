@@ -16,7 +16,7 @@ const db = new pg.Pool({
 app.get('/posts', async (req, res) => {
     try {
         const result = await db.query(
-        `SELECT footballPosts.id, footballPosts.title, footballPosts.content, footballPosts.likes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
+        `SELECT footballPosts.id, footballPosts.title, footballPosts.content, footballPosts.likes, footballPosts.dislikes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
         )
         res.send(result.rows)
         // console.log(result.rows)
@@ -71,6 +71,39 @@ app.put('/like', async (req, res) => {
         );
         
         // console.log(result)
+        res.status(200)
+    } catch (err) {
+        res.status(500).json({error: err})
+    }
+})
+
+app.put('/dislike', async (req, res) => {
+    
+    // console.log(req.body)
+    
+    try {
+        let id = req.body.id
+        let dislikes = req.body.dislike
+
+        const result = await db.query(
+            `UPDATE footballPosts Set dislikes = $1 WHERE id = $2`, [dislikes, id]
+        );
+        
+        // console.log(result)
+        res.status(200)
+    } catch (err) {
+        res.status(500).json({error: err})
+    }
+})
+
+app.delete('/delete/:id', (req, res) => {
+    // console.log(req.params)
+
+    try {
+        const id = req.params.id
+        const result = db.query(
+            `DELETE FROM footballPosts WHERE id = $1`, [id]
+        )
         res.status(200)
     } catch (err) {
         res.status(500).json({error: err})

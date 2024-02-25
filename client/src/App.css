@@ -85,6 +85,12 @@ a:hover {
     text-align: center;
 }
 
+.postsDiv div {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .postBtn {
     padding: 0 0.25rem;
     border-radius: 0.75rem;
@@ -143,7 +149,12 @@ button:active {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 5.5rem;
+}
+
+#postDetails div {
+    display: flex;
+    gap: 1rem;
 }
 
 #postBtns {
