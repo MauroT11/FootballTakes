@@ -84,10 +84,10 @@ export default function NewPost(serverURL) {
                     <label htmlFor="title">Content (MAX 200 CHAR):</label>
                     <textarea name="content" id="content" cols="30" rows="6" onChange={handleChange} maxLength={1000}></textarea>
                 </div>
-                <div>
+                {/* <div>
                     <label htmlFor="img">Image (Optional):</label>
                     <input type="file" name="img" id="img" />
-                </div>
+                </div> */}
                 
                 <button type="submit">Create Post</button>
             </form>

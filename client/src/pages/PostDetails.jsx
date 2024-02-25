@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom"
 export default function PostDetails(serverURL) {
 
     const post = useLocation()
+    console.log(post)
 
     // WHEN BUTTON GETS PRESSED THE ID AND LIKE OF THE POST INCREASES AND UPDATES POST ON DB
     async function handleLikes(id, likes) {
@@ -59,7 +60,7 @@ export default function PostDetails(serverURL) {
                 <h4>{post.state.likes} Like(s)</h4>
                 <h4>{post.state.dislikes} Dislike(s)</h4>
             </div>
-            
+
             <div id="postBtns">
                 <button className="postBtn" onClick={() => handleLikes(post.state.id, post.state.likes)}>👍</button>
                 <button className="postBtn" onClick={() => handleDislikes(post.state.id, post.state.dislikes)}>👎</button>

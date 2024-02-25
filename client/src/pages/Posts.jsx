@@ -16,7 +16,6 @@ export default function Posts(serverURL) {
         let data = await fetch(`${serverURL.serverURL}posts`);
         let results = await data.json();
         setPosts(results)
-        // console.log(posts)
     }
 
     let displayPosts = posts.map((post) => (

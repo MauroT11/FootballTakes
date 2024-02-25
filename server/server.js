@@ -61,6 +61,27 @@ app.post('/create', async (req, res) => {
     
 })
 
+app.post('/category', async (req, res) => {
+    
+    // console.log(req.body)
+    
+    try {
+        let category = req.body.form.category
+        let description = req.body.form.description
+
+        const result = await db.query(
+            `INSERT INTO footballCategories (name, description) VALUES ($1, $2)`,
+            [category, description]
+        );
+        
+        // console.log(result)
+        res.status(200)
+    } catch (err) {
+        res.status(500).json({error: err})
+    }
+    
+})
+
 app.put('/like', async (req, res) => {
     try {
         let id = req.body.id

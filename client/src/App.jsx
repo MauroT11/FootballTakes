@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound'
 import NewPost from './pages/NewPost'
 import Footer from './components/Footer'
 import PostDetails from './pages/PostDetails'
+import NewCategory from './pages/NewCategory'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/posts' element={<Posts serverURL={serverURL} />} />
         <Route path='/posts/:id' element={<PostDetails serverURL={serverURL} />} />
         <Route path='/newPost' element={<NewPost serverURL={serverURL} />} />
+        <Route path='/newCategory' element={<NewCategory serverURL={serverURL} />} />
 
       </Routes>
       <Footer />
