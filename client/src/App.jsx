@@ -12,7 +12,7 @@ import Categories from './pages/Categories'
 
 function App() {
 
-  const serverURL = 'http://localhost:8080/';
+  const serverURL = import.meta.env.VITE_ServerURL;
 
   return (
     <>

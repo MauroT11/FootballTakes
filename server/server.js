@@ -13,6 +13,7 @@ const db = new pg.Pool({
     connectionString: process.env.DB_URL
 }) 
 
+// GETS ALL DATA FROM POST
 app.get('/posts', async (req, res) => {
     try {
         const result = await db.query(
@@ -28,6 +29,7 @@ app.get('/posts', async (req, res) => {
     
 })
 
+// QUERY TO GET EVERY POST WITH THE SELECTED CATEGORY
 app.get('/categories/:id', async (req, res) => {
     
     try {
@@ -46,6 +48,7 @@ app.get('/categories/:id', async (req, res) => {
     
 })
 
+// GETS ALL DATA FROM CATEGORY
 app.get('/create', async (req, res) => {
     try {
         const result = await db.query(
@@ -60,8 +63,8 @@ app.get('/create', async (req, res) => {
     
 })
 
+// CREATE A NEW POST
 app.post('/create', async (req, res) => {
-
     console.log(req.body)
     try {
         let title = req.body.form.title
@@ -82,10 +85,10 @@ app.post('/create', async (req, res) => {
     
 })
 
+// CREATES A NEW CATEGORY FROM USER INPUT
 app.post('/category', async (req, res) => {
     
     // console.log(req.body)
-    
     try {
         let category = req.body.form.category
         let description = req.body.form.description
@@ -103,6 +106,7 @@ app.post('/category', async (req, res) => {
     
 })
 
+// INCREMENTS THE LIKE ON THE POST
 app.put('/like', async (req, res) => {
     try {
         let id = req.body.id
@@ -119,6 +123,7 @@ app.put('/like', async (req, res) => {
     }
 })
 
+// INCREMENTS THE DISLIKE ON THE POST
 app.put('/dislike', async (req, res) => {
     
     // console.log(req.body)
@@ -138,6 +143,7 @@ app.put('/dislike', async (req, res) => {
     }
 })
 
+// DELETE POST
 app.delete('/delete/:id', (req, res) => {
     // console.log(req.params)
 

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom"
-import Posts from "./Posts";
-
 
 export default function Categories(serverURL) {
 
