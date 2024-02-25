@@ -16,7 +16,7 @@ const db = new pg.Pool({
 app.get('/posts', async (req, res) => {
     try {
         const result = await db.query(
-        `SELECT footballPosts.title, footballPosts.content, footballPosts.likes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
+        `SELECT footballPosts.id, footballPosts.title, footballPosts.content, footballPosts.likes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
         )
         res.send(result.rows)
         // console.log(result.rows)
@@ -59,6 +59,22 @@ app.post('/create', async (req, res) => {
         res.status(500).json({error: err})
     }
     
+})
+
+app.put('/like', async (req, res) => {
+    try {
+        let id = req.body.id
+        let likes = req.body.like
+
+        const result = await db.query(
+            `UPDATE footballPosts Set likes = $1 WHERE id = $2`, [likes, id]
+        );
+        
+        // console.log(result)
+        res.status(200)
+    } catch (err) {
+        res.status(500).json({error: err})
+    }
 })
 
 app.listen(PORT, () => {

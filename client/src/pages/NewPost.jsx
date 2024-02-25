@@ -44,12 +44,6 @@ export default function NewPost(serverURL) {
     async function handlePost(e) {
         e.preventDefault();
 
-        // setCats(form)
-        // const formData = new FormData(form)
-        // const newPost = Object.fromEntries(formData)
-
-        // console.log(newPost)
-
         let results = await fetch(`${serverURL.serverURL}create`, {
             method: 'POST',
             mode: 'cors',
@@ -74,7 +68,7 @@ export default function NewPost(serverURL) {
             <form onSubmit={handlePost}>
                 <div>
                     <label htmlFor="title">Title:</label>
-                <input type="text" name="title" id="title" onChange={handleChange}/>
+                <input type="text" name="title" id="title" onChange={handleChange} maxLength={50}/>
                 </div>
                 <div>
                     <label htmlFor="categorySelect">Select category</label>
@@ -82,8 +76,8 @@ export default function NewPost(serverURL) {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="title">Content:</label>
-                <textarea name="content" id="content" cols="30" rows="10" onChange={handleChange}></textarea>
+                    <label htmlFor="title">Content (MAX 200 CHAR):</label>
+                <textarea name="content" id="content" cols="30" rows="6" onChange={handleChange} maxLength={1000}></textarea>
                 </div>
                 <button type="submit">Create Post</button>
             </form>

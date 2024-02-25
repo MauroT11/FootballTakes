@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 
 export default function Posts(serverURL) {
 
@@ -10,6 +11,7 @@ export default function Posts(serverURL) {
         getPosts()
     }, [])
 
+    // GETS ALL POSTS FROM DB TO DISPLAY
     async function getPosts() {
         let data = await fetch(`${serverURL.serverURL}posts`);
         let results = await data.json();
@@ -20,42 +22,18 @@ export default function Posts(serverURL) {
     let displayPosts = posts.map((post) => (
         <div className="postsDiv" key={posts.id}>
             <h3>{post.title}</h3>
-            <p>{post.category}</p>
-            <p>{post.content}</p>
-            <p>{post.likes}</p>
+            <h4>{post.category}</h4>
+            <h5>{post.likes} Like(s)</h5>
+            <div id="postBtnDiv">
+                <Link to={`/posts/${post.id}`} state={post}>
+                    <button>View Post</button>
+                </Link>
+                {/* <button className="postBtn delete" onClick={handleDelete}>🗙</button> */}
+            </div>
+            
         </div>
     ))
 
-    // async function displayPosts() {
-    //     let posts = await getPosts();
-    //     console.log(posts);
-        
-    //     postBoard.innerHTML= '';
-
-    //     posts.forEach(post => {
-    //         let postsDiv = document.createElement('div');
-    //         let title = document.createElement('h3');
-    //         let content = document.createElement('p');
-    //         let likes =  document.createElement('p');
-    //         let category = document.createElement('p');
-
-    //         postsDiv.setAttribute('class', 'postsDiv');
-    //         title.textContent = post.title;
-    //         content.textContent = post.content;
-    //         likes.textContent = `👍${post.likes}`;
-    //         category.textContent = `Category: ${post.category}`;
-
-    //         postsDiv.appendChild(title);
-    //         postsDiv.appendChild(category);
-    //         postsDiv.appendChild(content);
-    //         postsDiv.appendChild(likes);
-            
-    //         postBoard.appendChild(postsDiv);
-    //     });
-
-    // }
-    
-    // displayPosts()
 
     return (
         <div className="mainDiv">
