@@ -24,11 +24,16 @@ export default function NewCategory(serverURL) {
             },
             body: JSON.stringify({ form })
         });
+
+        if (results.ok) {
+            console.log('Category Created')
+        }
     }
 
     return (
         <div className="mainDiv">
             <h2>Create a new Category</h2>
+            
             <form onSubmit={handleCategory}>
                 <div>
                     <label htmlFor="category">Category:</label>
@@ -40,6 +45,12 @@ export default function NewCategory(serverURL) {
                 </div>
                 <button type="submit">Create Category</button>
             </form>
+            <br />
+            <h4 className="guideLines">Rules for creating a category:</h4>
+            <ul className="guideLines">
+                <li>A category that can be widely discussed.</li>
+                <li>Only football related categories.</li>
+            </ul>
         </div>
     )
 }

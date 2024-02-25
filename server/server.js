@@ -16,7 +16,7 @@ const db = new pg.Pool({
 app.get('/posts', async (req, res) => {
     try {
         const result = await db.query(
-        `SELECT footballPosts.id, footballPosts.title, footballPosts.content, footballPosts.likes, footballPosts.dislikes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
+        `SELECT footballPosts.id, footballPosts.title, footballPosts.content, footballPosts.date, footballPosts.likes, footballPosts.dislikes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id`
         )
         res.send(result.rows)
         // console.log(result.rows)
@@ -28,10 +28,28 @@ app.get('/posts', async (req, res) => {
     
 })
 
+app.get('/categories/:id', async (req, res) => {
+    
+    try {
+        let id = req.params.id
+        const result = await db.query(
+        `SELECT footballPosts.id, footballPosts.title, footballPosts.content, footballPosts.date, footballPosts.likes, footballPosts.dislikes, footballCategories.name AS Category FROM footballPosts JOIN footballCategories ON footballPosts.footballCategory = footballCategories.id WHERE footballCategory = $1`,
+        [id]
+        )
+        res.send(result.rows)
+        console.log(result.rows)
+        res.status(200)
+        // console.log(result)
+    } catch (err) {
+        res.status(500).json({error: err})
+    }
+    
+})
+
 app.get('/create', async (req, res) => {
     try {
         const result = await db.query(
-        `SELECT footballCategories.name AS category, footballCategories.id AS catId FROM footballCategories`
+        `SELECT footballCategories.name AS category, footballCategories.description, footballCategories.id AS catId FROM footballCategories`
         )
         res.send(result.rows)
         res.status(200)
@@ -43,14 +61,17 @@ app.get('/create', async (req, res) => {
 })
 
 app.post('/create', async (req, res) => {
+
+    console.log(req.body)
     try {
         let title = req.body.form.title
         let content = req.body.form.content
         let category = req.body.form.categorySelect
+        let date = req.body.date
 
         const result = await db.query(
-            `INSERT INTO footballPosts (title, content, likes, footballcategory) VALUES ($1, $2, $3, $4)`,
-            [title, content, 0, category]
+            `INSERT INTO footballPosts (title, content, likes, dislikes, footballcategory, date) VALUES ($1, $2, $3, $4, $5, $6)`,
+            [title, content, 0, 0, category, date]
         );
         
         // console.log(result)

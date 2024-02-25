@@ -82,7 +82,7 @@ export default function NewPost(serverURL) {
                 </div>
                 <div>
                     <label htmlFor="title">Content (MAX 200 CHAR):</label>
-                    <textarea name="content" id="content" cols="30" rows="6" onChange={handleChange} maxLength={1000}></textarea>
+                    <textarea name="content" id="content" cols="30" rows="6" onChange={handleChange}/>
                 </div>
                 {/* <div>
                     <label htmlFor="img">Image (Optional):</label>

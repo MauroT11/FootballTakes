@@ -54,13 +54,13 @@ export default function PostDetails(serverURL) {
         <div id="postDetails">
             {/* <h1>POST DETAILS</h1> */}
             <h1>{post.state.title}</h1>
-            <h3>{post.state.category}</h3>
+            <h2>{post.state.category}</h2>
+            <h5>Upload: {post.state.date}</h5>
             <p>{post.state.content}</p>
             <div>
                 <h4>{post.state.likes} Like(s)</h4>
                 <h4>{post.state.dislikes} Dislike(s)</h4>
             </div>
-
             <div id="postBtns">
                 <button className="postBtn" onClick={() => handleLikes(post.state.id, post.state.likes)}>👍</button>
                 <button className="postBtn" onClick={() => handleDislikes(post.state.id, post.state.dislikes)}>👎</button>
