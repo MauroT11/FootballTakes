@@ -54,8 +54,8 @@ export default function PostDetails(serverURL) {
         <div id="postDetails">
             {/* <h1>POST DETAILS</h1> */}
             <h1>{post.state.title}</h1>
-            <h2>{post.state.category}</h2>
-            <h5>Upload: {post.state.date}</h5>
+            <h2>Category: {post.state.category}</h2>
+            <h5>Uploaded: {post.state.date}</h5>
             <p>{post.state.content}</p>
             <div>
                 <h4>{post.state.likes} Like(s)</h4>
